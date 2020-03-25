@@ -1,0 +1,38 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "VisualEditor0",
+            "Effect": "Allow",
+            "Action": [
+                "dynamodb:BatchGetItem",
+                "dynamodb:BatchWriteItem",
+                "dynamodb:UpdateTimeToLive",
+                "dynamodb:ConditionCheckItem",
+                "dynamodb:PutItem",
+                "dynamodb:DeleteItem",
+                "dynamodb:RestoreTableToPointInTime",
+                "dynamodb:Scan",
+                "dynamodb:ListTagsOfResource",
+                "dynamodb:Query",
+                "dynamodb:UpdateItem",
+                "dynamodb:DescribeTimeToLive",
+                "dynamodb:DeleteTable",
+                "dynamodb:CreateTable",
+                "dynamodb:DescribeTable",
+                "dynamodb:GetItem",
+                "dynamodb:UpdateTable"
+            ],
+            "Resource": "arn:aws:dynamodb:eu-west-2:709303708159:table/LondonEventsLambda"
+        },
+        {
+            "Sid": "VisualEditor1",
+            "Effect": "Allow",
+            "Action": [
+                "dynamodb:ListTables",
+                "dynamodb:DescribeLimits"
+            ],
+            "Resource": "arn:aws:dynamodb:eu-west-2:709303708159:table/LondonEventsLambda"
+        }
+    ]
+}
