@@ -4,7 +4,7 @@
 
 What a strange time. One day everything is beyond your wildest dreams, next day world is in quarantine.
 
-I made a serverless webscraper, which sends me an email each time a new event is published on a particular website. I needed it because the website is missing email subscription and their events were getting fully booked before I could react. Now I've got an edge over manually booking folks.
+So I've made a serverless webscraper, which sends me an email each time a new event is published on a particular website. I needed it because the website is missing email subscription and their events were getting fully booked before I could react. Now I've got an edge over manually booking folks.
 
 Very proud of this, given I knew nothing about any of the components merely few months ago. No code, nothing. Before, I was mostly image oriented (still can be, see the diagram!). 
 
@@ -21,4 +21,4 @@ Also, looking for suggestions on how to move forward, maybe make something simil
 
 
 
-*Would like to thank my Generation tutor Andy Dent and my colleagues Dan, Patrick and Natasha, all of whom contributed.*
+*I would like to thank all of people who helped me here: my Generation tutor Andy Dent and my colleagues [@dan-how]( https://github.com/dan-how ), Patrick and Natasha.*
