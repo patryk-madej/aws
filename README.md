@@ -15,9 +15,9 @@ I've written two Lambda functions in Python with custom IAM roles and settings (
 
 ## Let me know what you think!
 
-**I'm very much a beginner, so please share any comments on how to improve it. At the moment probably the weakest part is the first Lambda, the webscraper. The pattern is hard-coded, so the smallest change in formatting on the website will break the app, as it already did once.**
+I'm very much a beginner, so please share any comments on how to improve it. At the moment probably the weakest part is the first Lambda, the webscraper. The pattern is hard-coded, so the smallest change in formatting on the website will break the app, as it already did once.
 
-**Also, looking for suggestions on how to move forward, maybe make something similar into a customer friendly product? But how?**
+Also, looking for suggestions on how to move forward, maybe make something similar into a customer friendly product? But how?
 
 
 
