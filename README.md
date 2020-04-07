@@ -6,7 +6,8 @@ It's a serverless webscraper, which sends me an email each time a new event is p
 
 Very proud of this, given I knew nothing about any of the components merely few months ago. Before, I was mostly image oriented (still can be, see the diagram below!). 
 
-**Technical details.** 
+#Technical details.
+
 I've written two Lambda functions in Python with custom IAM roles and settings (timeouts mostly, one environmental variable). First Lambda is deployed from Cloud9, as it was the easiest way to include several 3rd party libraries it required - that's the webscraper itself using libraries such as BeautifulSoup, lxml and requests. Triggered by CloudWatch every 6hrs, the function searches the website against a pattern. Once scraped, the data is then published to DynamoDB table, which in turn triggers the second Lambda through Streams (DB updates tracker). Output is then sent to my email via SNS topic.
 
 Please share any comments on how to improve it! At the moment probably the weakest part is the first Lambda, the webscraper. The pattern is hard-coded, so the smallest change in formatting on the website will break the app, as it already did once. 
