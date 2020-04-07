@@ -6,7 +6,6 @@ import lxml
 import requests
 from bs4 import BeautifulSoup
 
-
 def lambda_handler(events, context):
     website = os.environ['website']
     result = requests.get(website)
