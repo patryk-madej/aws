@@ -25,7 +25,7 @@ I've written two Lambda functions in Python with custom IAM roles and settings (
 
 I'm very much a beginner, so please share any comments on how to improve it. At the moment probably the weakest part is the first Lambda, the web scraper. The pattern is hard-coded, so the smallest change in formatting on the website will break the app, as it already did once.
 
-Also, looking for suggestions on how to move forward in these tough times! <br /> <br /> <br /> <br />
+Also, looking for suggestions on how to move forward in these weird times! <br /> <br /> <br /> <br />
 
 
 
