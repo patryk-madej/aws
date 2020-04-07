@@ -8,13 +8,13 @@
                 "logs:CreateLogStream",
                 "logs:PutLogEvents"
             ],
-            "Resource": "arn:aws:logs:eu-west-2:709303708159:log-group:/aws/lambda/cloud9-webscraper:*"
+            "Resource": "arn:aws:logs:eu-west-2:XXXXXXXX:log-group:/aws/lambda/cloud9-webscraper:*"
         },
         {
             "Sid": "VisualEditor1",
             "Effect": "Allow",
             "Action": "logs:CreateLogGroup",
-            "Resource": "arn:aws:logs:eu-west-2:709303708159:*"
+            "Resource": "arn:aws:logs:eu-west-2:XXXXXXXX:*"
         },
         {
             "Sid": "VisualEditor2",
@@ -24,7 +24,7 @@
                 "dynamodb:PutItem",
                 "dynamodb:UpdateItem"
             ],
-            "Resource": "arn:aws:dynamodb:eu-west-2:709303708159:table/LondonEventsLambda"
+            "Resource": "arn:aws:dynamodb:eu-west-2:XXXXXXXX:table/LondonEventsLambda"
         }
     ]
 }
