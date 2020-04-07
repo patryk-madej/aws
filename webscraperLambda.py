@@ -1,9 +1,11 @@
-import lxml
-import requests
-from bs4 import BeautifulSoup
 import fnmatch
 import os
 import boto3
+#third party libraries below
+import lxml
+import requests
+from bs4 import BeautifulSoup
+
 
 def lambda_handler(events, context):
     website = os.environ['website']
@@ -22,16 +24,16 @@ def lambda_handler(events, context):
                 events.append(d)
 
     data = []
-    for a in events:
-        b=a.replace('Workshop at ', '_') #replace the following phrases on each string
+    for b in events:
+        #b=a.replace('Workshop at ', '_') #this one has to be skipped as there are now two possible titles
         c=b.replace(' access_time ', '_')
         d=c.replace(' calendar_today ', '_')
         e=d.split('_') #split into lists along '_'
         data=data+e #add objects from 'e' list to the 'data' list
 
-    event = data[0::4] #start with first(second) position, iterate every 4th to extract every event
-    time = data[1::4]
-    date = data[2::4]
+    event = data[0::3] #start with first(zeroeth) position, iterate every 3rd to extract every event
+    time = data[1::3]
+    date = data[2::3]
 
     table = boto3.resource('dynamodb').Table('LondonEventsLambda') #access this specific DynamoDB table
 
@@ -41,5 +43,3 @@ def lambda_handler(events, context):
         "Time": time[x],
         "Date": date[x]
         }
-        #print(input) #simulate DynamoDB
-        response = table.put_item(Item=input)
