@@ -5,11 +5,26 @@
             "Sid": "VisualEditor0",
             "Effect": "Allow",
             "Action": [
+                "logs:CreateLogStream",
+                "logs:PutLogEvents"
+            ],
+            "Resource": "arn:aws:logs:eu-west-2:709303708159:log-group:/aws/lambda/cloud9-webscraper:*"
+        },
+        {
+            "Sid": "VisualEditor1",
+            "Effect": "Allow",
+            "Action": "logs:CreateLogGroup",
+            "Resource": "arn:aws:logs:eu-west-2:709303708159:*"
+        },
+        {
+            "Sid": "VisualEditor2",
+            "Effect": "Allow",
+            "Action": [
                 "dynamodb:BatchWriteItem",
                 "dynamodb:PutItem",
                 "dynamodb:UpdateItem"
             ],
-            "Resource": "arn:aws:dynamodb:eu-west-2:XXXXXXXXXXXX:table/LondonEventsLambda"
+            "Resource": "arn:aws:dynamodb:eu-west-2:709303708159:table/LondonEventsLambda"
         }
     ]
 }
