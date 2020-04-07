@@ -10,9 +10,6 @@ def DynamoDBStreamInsert(event, context):
                 time = record['dynamodb']['NewImage']['Time']['S']
                 date = record['dynamodb']['NewImage']['Date']['S']
                 
-                print('Done handling INSERT')
-                print('-------------------------')
-                
                 message = str(newevent + ' -- ' + time + ' -- ' + date)
                 response = boto3.client('sns').publish(
                     TopicArn='arn:aws:sns:eu-west-2:709303708159:dynamodb', 
