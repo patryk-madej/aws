@@ -5,9 +5,13 @@
 ## I finished my first functional project in AWS. 
 
 What a strange time. One day everything is beyond your wildest dreams, you ace your exam, get the best job - the next day the world is in quarantine and everything stops.
+
  
-Over this mad period, I've finished a #serverless Python web scraper, my first personal application. It sends me an email each time a new event is published on a particular website. The website doesn't send any notifications and their events were getting fully booked before I could react. Now I've got an edge over folks booking manually.
- 
+
+Once I've accepted the new reality, I used the spare time to finish a serverless web scraper in Python/AWS, my first personal application. It sends me an email each time a new event is published on a particular website. The website doesn't have notifications and their events were getting fully booked before I could react. Now I've got an edge over folks booking manually.
+
+
+
 Very proud of this, given I knew nothing about any of the components merely a few months ago. <br /><br />
 
 
