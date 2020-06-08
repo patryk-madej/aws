@@ -1,0 +1,17 @@
+version: 0.2
+phases:
+  install:
+    runtime-versions:
+        Python: 3.6
+  build:
+    commands:
+      - pip install beautifulsoup4
+      - pip install lxml
+      - pip install requests
+      - export BUCKET=everythingandeverything
+      - aws cloudformation package --template-file template.yml --s3-bucket $BUCKET --output-template-file outputtemplate.yml
+artifacts:
+  type: zip
+  files:
+    - template.yml
+    - outputtemplate.yml
