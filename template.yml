@@ -9,6 +9,6 @@ Resources:
       Description: 'Scrapes events data from a website and places it in DynamoDB'
       Handler: webscraperLambda.lambda_handler
       MemorySize: 128
-      Role: 'arn:aws:iam::709303708159:role/Lambda-DynamoDB-LondonEvents'
+      Role: 'arn:aws:iam::709303708159:role/service-role/Lambda-DynamoDB-BasicWrite'
       Runtime: python3.6
       Timeout: 30
