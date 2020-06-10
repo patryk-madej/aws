@@ -5,7 +5,7 @@ Resources:
   webscraperLambda:
     Type: 'AWS::Serverless::Function'
     Properties:
-      FunctionName: cloud9-webscraper
+      FunctionName: cicd-webscraper
       Description: 'Scrapes events data from a website and places it in DynamoDB'
       Handler: webscraperLambda.lambda_handler
       MemorySize: 128
