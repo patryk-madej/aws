@@ -15,4 +15,3 @@ artifacts:
   type: zip
   files:
     - template.yml
-    - outputtemplate.yml
