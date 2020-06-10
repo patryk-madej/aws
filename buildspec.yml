@@ -10,8 +10,8 @@ phases:
   build:
     commands:
       - export BUCKET=everythingandeverything
-      - aws cloudformation package --template-file template.yml --s3-bucket $BUCKET --output-template-file outputtemplate.yml
-artifacts:
-  type: zip
-  files:
-    - template.yml
+      - aws cloudformation package --template-file template.yml #--s3-bucket $BUCKET --output-template-file outputtemplate.yml
+#artifacts:
+  #type: zip
+  #files:
+    #- template.yml
