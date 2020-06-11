@@ -1,6 +1,6 @@
 import lxml
-#import requests #not needed
 from bs4 import BeautifulSoup
+#import requests #not needed
 #import fnmatch #not needed
 import os
 import boto3
@@ -24,6 +24,7 @@ def lambda_handler(events, context):
         if 'London' or 'Virtual' in d: # match only events that have 'London' or 'Virtual' in them
             events.append(d)
         #print(d)
+        
     #print('-------------------------')
     #print(' P A R S E D  D A T A ')
     #print('-------------------------')        
@@ -39,7 +40,7 @@ def lambda_handler(events, context):
             #print(e)
         else:
             continue
-    #print(data)
+    
     #print('-------------------------')
     #print(' F I N A L  D A T A ')
     #print('-------------------------')
@@ -56,7 +57,7 @@ def lambda_handler(events, context):
         "Time": time[x],
         "Date": date[x]
         }
-        print(inp) #simulate DynamoDB
+        print(inp) #simulate DynamoDB input
         response = table.put_item(Item=inp)
 
 
