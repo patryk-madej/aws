@@ -1,14 +1,17 @@
 import lxml
-import requests
+#import requests #not needed
 from bs4 import BeautifulSoup
-#import fnmatch # not needed
+#import fnmatch #not needed
 import os
 import boto3
+from urllib.request import urlopen, Request
+
 
 def lambda_handler(events, context):
-    website = os.environ['website'] #os.environ['website']
-    result = requests.get(website)
-    source = result.content
+    headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.3'}
+    req = Request(url="https://codebar.io/events", headers=headers) 
+    source = urlopen(req).read() 
+
     soup = BeautifulSoup(source, 'lxml')
 
     event_divs = soup.find_all("div",{'class': 'event'}) # create list with the html objects
