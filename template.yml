@@ -2,6 +2,14 @@ AWSTemplateFormatVersion: '2010-09-09'
 Transform: 'AWS::Serverless-2016-10-31'
 Description: An AWS Serverless Specification template describing your function.
 Resources:
+    Type: 'AWS::Serverless::LayerVersion'
+    Properties:
+      LayerName: bs4_for_python36
+      Description: Beautiful Soup 4 Layer for Python 3.6
+      ContentUri: ./layers/bs4-layer/bs4-python36-layer.zip
+      CompatibleRuntimes:
+        - python3.6
+      RetentionPolicy: Retain
   webscraperLambda:
     Type: 'AWS::Serverless::Function'
     Properties:
