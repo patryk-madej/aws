@@ -7,7 +7,7 @@ Resources:
     Properties:
       LayerName: bs4_for_python36
       Description: Beautiful Soup 4 Layer for Python 3.6
-      ContentUri: ./layers/bs4-layer/bs4-python36-layer.zip
+      ContentUri: ./bs4-python36-layer.zip
       CompatibleRuntimes:
         - python3.6
       RetentionPolicy: Retain
