@@ -15,13 +15,13 @@ Once I've accepted the new reality, I used the spare time to finish a serverless
 Very proud of this, given I knew nothing about any of the components merely a few months ago. <br /><br />
 
 
-## Technical details.
+# Technical details.
 
 I've written two Lambda functions in Python with custom IAM roles and settings (timeouts mostly, one environmental variable). First Lambda is deployed from Cloud9, as it was the easiest way to include few 3rd party libraries it required - that's the web scraper itself using libraries such as BeautifulSoup, lxml and requests. Triggered by CloudWatch every 6hrs, the function searches the website against a pattern. Once scraped, the data is then stored in DynamoDB table, which in turn triggers the second Lambda through Streams (DB updates tracker). If there's new data, the output is sent to my email via SNS topic. <br /><br />
 
 
 
-## Let me know what you think!
+# Let me know what you think!
 
 I'm very much a beginner, so please share any comments on how to improve this. At the moment probably the weakest part is the first Lambda, the web scraper. The pattern is hard-coded, so any change in formatting on the website will break the app, as it already did once.
 
