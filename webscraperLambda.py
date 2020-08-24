@@ -19,7 +19,7 @@ def lambda_handler(events, context):
     events = []
     for a in event_divs:
         b=a.getText() # turn each complex html object into text
-        c=b.split() # delete all whitespaces
+        c=b.split() # split into list 
         d=" ".join(c) # place single space between words
         if 'London' or 'Virtual' in d: # match only events that have 'London' or 'Virtual' in them
             events.append(d)
