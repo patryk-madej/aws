@@ -2,29 +2,19 @@ import json
 import boto3
 
 def DynamoDBStreamInsert(event, context):
-    try:    
-        for record in event['Records']:
-
-            if record['eventName'] == 'INSERT':
-                newevent = record['dynamodb']['NewImage']['Event']['S']
-                time = record['dynamodb']['NewImage']['Time']['S']
-                date = record['dynamodb']['NewImage']['Date']['S']
-                
-                message = str(newevent + ' -- ' + time + ' -- ' + date)
-                response = boto3.client('sns').publish(
-                    TopicArn='arn:aws:sns:eu-west-2:709303708159:dynamodb', 
-                    Message=f'{message}',
-                    # (Optional - can't be used with PhoneNumer)
-                    #TargetArn='string', (Optional - can't be used with PhoneNumer)
-                    #Subject='string', (Optional - not used with PhoneNumer)
-                    MessageStructure='string' #(Optional)
-                )
-                
-            else:
-                print('E R R O R')
-                print('-------------------------')
-                
-    except Exception as e:
-        print(e)
-        print('-------------------------')
-        return 'E R R O R 2 !'
+    
+    for record in event['Records']:
+        
+        if record['eventName'] == 'INSERT':
+            newevent = record['dynamodb']['NewImage']['Event']['S']
+            time = record['dynamodb']['NewImage']['Time']['S']
+            date = record['dynamodb']['NewImage']['Date']['S']
+            link = record['dynamodb']['NewImage']['Link']['S']
+            
+            message = str(newevent + ' | ' + time + ' | ' + date+ ' | ' + link)
+            response = boto3.client('sns').publish(
+                TopicArn='arn:aws:sns:eu-west-2:709303708159:dynamodb', 
+                Message=f'{message}',
+                MessageStructure='string'
+            )
+            return message
