@@ -1,64 +1,32 @@
-import lxml
 from bs4 import BeautifulSoup
-#import requests #not needed
-#import fnmatch #not needed
-import os
-import boto3
 from urllib.request import urlopen, Request
-
+import boto3
 
 def lambda_handler(events, context):
     headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.3'}
-    req = Request(url="https://codebar.io/events", headers=headers) 
-    source = urlopen(req).read() 
+    request = Request(url="https://codebar.io/events", headers=headers) 
+    source = urlopen(request).read() 
 
-    soup = BeautifulSoup(source, 'lxml')
+    soup = BeautifulSoup(source, 'html.parser')
 
-    event_divs = soup.find_all("div",{'class': 'event'}) # create list with the html objects
+    event_divs = soup.find_all("div",{'class': 'event'})
 
-    events = []
-    for a in event_divs:
-        b=a.getText() # turn each complex html object into text
-        c=b.split() # split into list 
-        d=" ".join(c) # place single space between words
-        if 'London' or 'Virtual' in d: # match only events that have 'London' or 'Virtual' in them
-            events.append(d)
-        #print(d)
-        
-    #print('-------------------------')
-    #print(' P A R S E D  D A T A ')
-    #print('-------------------------')        
-
-    data = []
-    for a in events:
-        b=a.replace('Workshop at ', '') # replace the following phrases on each string
-        c=b.replace(' access_time ', '_')
-        d=c.replace(' calendar_today ', '_')
-        e=d.split('_') # split into lists along '_'
-        if e != '':
-            data=data+e # add objects from 'e' list to the 'data' list
-            #print(e)
-        else:
-            continue
+    table = boto3.resource('dynamodb').Table('LondonEventsLambda')
     
-    #print('-------------------------')
-    #print(' F I N A L  D A T A ')
-    #print('-------------------------')
+    for i in range(len(event_divs)):
 
-    event = data[0::3] # start with nth position, iterate every nth to extract every event
-    date = data[1::3]
-    time = data[2::3]
+        event=soup.find_all("h3",{'class': 'title'})[i].text.replace('\n',' ').replace('Workshop at ','').strip()
+        date=soup.find_all("div",{'class': 'date'})[i].text.replace('\n',' ').replace('calendar_today','').strip()
+        time=soup.find_all("div",{'class': 'time'})[i].text.replace('\n',' ').replace('access_time','').strip()
+        linkEnd=soup.find_all("h3",{'class': 'title'})[i].find('a')['href'].strip()
+        link=f"https://codebar.io{linkEnd}"
 
-    table = boto3.resource('dynamodb').Table('LondonEventsLambda') #access this specific DynamoDB table
-
-    for x in range(len(events)):
         inp = {
-        "Event": event[x],
-        "Time": time[x],
-        "Date": date[x]
+        "Event": event,
+        "Time": time,
+        "Date": date,
+        "Link": link
         }
+
         print(inp) #simulate DynamoDB input
         response = table.put_item(Item=inp)
-
-
-#lambda_handler(1, 2)
