@@ -14,10 +14,10 @@ Resources:
   webscraperLambda:
     Type: 'AWS::Serverless::Function'
     Properties:
-      FunctionName: cicd-webscraper
-      Description: 'Scrapes events data from a website and places it in DynamoDB'
+      FunctionName: codebarWebscraper
+      Description: 'Scrapes events data from codebar and places them in DynamoDB'
       Handler: webscraperLambda.lambda_handler
-      MemorySize: 128
+      MemorySize: 256
       Role: 'arn:aws:iam::709303708159:role/service-role/Lambda-DynamoDB-BasicWrite'
       Runtime: python3.6
-      Timeout: 30
+      Timeout: 60
