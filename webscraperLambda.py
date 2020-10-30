@@ -13,6 +13,17 @@ def lambda_handler(events, context):
 
     table = boto3.resource('dynamodb').Table('LondonEventsLambda')
     
+    def timeChanger(time):
+        gmt=int(time[-6:-4]) #|01|:00
+        fromTime=int(time[:2]) #|18|:30 - 21:00
+        toTime=int(time[8:10]) #18:30 - |21|:00
+        if time[-7]=='+':
+            gmtTime=f"{fromTime+gmt}:00-{toTime+gmt}:00 GMT"
+        else: #if '-'
+            gmtTime=f"{fromTime-gmt}:00-{toTime-gmt}:00 GMT"
+        return(gmtTime)
+    
+    
     for i in range(len(event_divs)):
 
         event=soup.find_all("h3",{'class': 'title'})[i].text.replace('\n',' ').replace('Workshop at ','').strip()
@@ -23,7 +34,7 @@ def lambda_handler(events, context):
 
         inp = {
         "Event": event,
-        "Time": time,
+        "Time": timeChanger(time),
         "Date": date,
         "Link": link
         }
